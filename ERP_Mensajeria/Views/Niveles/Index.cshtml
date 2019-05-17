@@ -1,51 +1,91 @@
 ﻿@model IEnumerable<ERP_Mensajeria.Models.Nivel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Inicio";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Detalle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Edificio.Nombre)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Detalle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Edificio.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Nivel }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_Nivel }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Nivel })
-        </td>
-    </tr>
+@if (!Request.IsAuthenticated)
+{
+    Response.Redirect(@Url.Action("Login", "Account"));
 }
+else
+{
 
-</table>
+    <div class="container-fluid mt-5">
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body d-sm-flex justify-content-between">
+                <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span><a href="@Url.Action("Index", "Home")">Inicio</a></span>
+                    <span>/</span>
+                    <span>Niveles</span>
+                </h4>
+            </div>
+        </div>
+
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2>Listado de niveles</h2>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-default btn-rounded" href="@Url.Action("Create", "Niveles")">
+                            <i class="fa fa-plus"></i> Crear
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <div class="table-responsive ">
+                    <table class="table table-hover ">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Detalle)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Estado)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Edificio.Nombre)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Detalle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Estado)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Edificio.Nombre)
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm green" href="@Url.Action("Edit", "Niveles", new { id = item.ID_Nivel })">
+                                        <i class="fa fa-edit"></i> Editar
+                                    </a>
+                                    <a class="btn btn-sm blue" href="@Url.Action("Details", "Niveles", new { id = item.ID_Nivel })">
+                                        <i class="fa fa-eye"></i> Detalle
+                                    </a>
+                                    <a class="btn btn-sm red" href="@Url.Action("Delete", "Niveles", new { id = item.ID_Nivel })">
+                                        <i class="fa fa-trash"></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    </div>
+</div>
+</div>
+</div>
+}

@@ -40,31 +40,7 @@ namespace ERP_Mensajeria.Controllers
         public ActionResult Create()
         {
             ViewBag.ID_Edificio = new SelectList(db.Edificio, "ID_Edificio", "Nombre");
-            var edificios = db.Edificio.ToList();
-            var dt = new DataTable();
-            for(int i=0; i<edificios.Count-1;i++)
-            {
-                dt.Rows.Add(edificios[i]);
-            }
-            ViewBag.Edificios = ToSelectList(dt, "ID_Edificio", "Nombre");
             return View();
-        }
-
-        [NonAction]
-        public SelectList ToSelectList(DataTable table, string valueField, string textField)
-        {
-            List<SelectListItem> list = new List<SelectListItem>();
-
-            foreach (DataRow row in table.Rows)
-            {
-                list.Add(new SelectListItem()
-                {
-                    Text = row[textField].ToString(),
-                    Value = row[valueField].ToString()
-                });
-            }
-
-            return new SelectList(list, "Value", "Text");
         }
 
         // POST: Niveles/Create

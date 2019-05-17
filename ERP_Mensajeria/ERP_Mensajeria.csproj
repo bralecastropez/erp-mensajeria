@@ -195,7 +195,6 @@
     <Compile Include="Controllers\ContactosController.cs" />
     <Compile Include="Controllers\EdificiosController.cs" />
     <Compile Include="Controllers\NivelesController.cs" />
-    <Compile Include="Controllers\TipoUsuarios1Controller.cs" />
     <Compile Include="Controllers\TipoUsuariosController.cs" />
     <Compile Include="Models\Contacto.cs">
       <DependentUpon>ERPMensajeriaModel.tt</DependentUpon>

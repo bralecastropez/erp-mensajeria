@@ -23,11 +23,15 @@ namespace ERP_Mensajeria.Models
         }
     
         public int ID_Nivel { get; set; }
+
+        [Display(Name = "Edificio")]
+        [DisplayName("Edificio")]
+        [Required(ErrorMessage = "Debe seleccionar un edificio")]
         public int ID_Edificio { get; set; }
 
         [StringLength(20)]
         [Display(Name = "Nombre")]
-        [Required(ErrorMessage = "Debe ingresar el nombre del tipo de usuario")]
+        [Required(ErrorMessage = "Debe ingresar el nombre del nivel")]
         public string Nombre { get; set; }
 
         [StringLength(200)]
