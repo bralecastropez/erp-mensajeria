@@ -1,0 +1,43 @@
+﻿@model ERP_Mensajeria.Models.IndexViewModel
+@{
+    ViewBag.Title = "Gestionar";
+}
+
+<div class="container-fluid mt-5">
+    <div class="card mb-4 wow fadeIn">
+        <div class="card-body d-sm-flex justify-content-between">
+            <h4 class="mb-2 mb-sm-0 pt-1">
+                <span><a style="color: black;" href="@Url.Action("Index","Home")">Inicio</a></span>
+                <span>/</span>
+                <span><a href="@Url.Action("Index", "Manage")">Cuenta</a></span>
+            </h4>
+        </div>
+    </div>
+
+    <div class="card mb-4 wow fadeIn">
+        <div class="card-body">
+
+            <p class="text-success">@ViewBag.StatusMessage</p>
+            <div>
+                <h4>Cambiar la configuración de la cuenta</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>Contraseña:</dt>
+                    <dd>
+                        [
+                        @if (Model.HasPassword)
+            {
+                            @Html.ActionLink("Cambiar la contraseña", "ChangePassword")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Crear", "SetPassword")
+                        }
+                        ]
+                    </dd>
+                    
+                </dl>
+            </div>
+            </div>
+</div>
+</div>

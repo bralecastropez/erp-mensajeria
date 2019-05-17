@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ERP_Mensajeria.Models.Edificio>
+
+@{
+    ViewBag.Title = "Inicio";
+}
+
+@if (!Request.IsAuthenticated)
+{
+    Response.Redirect(@Url.Action("Login", "Account"));
+}
+else
+{
+
+    <div class="container-fluid mt-5">
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body d-sm-flex justify-content-between">
+                <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span><a href="@Url.Action("Index", "Home")">Inicio</a></span>
+                    <span>/</span>
+                    <span>Edificios</span>
+                </h4>
+            </div>
+        </div>
+
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2>Listado de edificios</h2>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-default btn-rounded" href="@Url.Action("Create", "Edificios")">
+                            <i class="fa fa-plus"></i> Crear
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <div class="table-responsive ">
+                    <table class="table table-hover ">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Detalle)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Ubicacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Estado)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Detalle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ubicacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Estado)
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm green" href="@Url.Action("Edit", "Edificios", new { id = item.ID_Edificio })">
+                                        <i class="fa fa-edit"></i> Editar
+                                    </a>
+                                    <a class="btn btn-sm blue" href="@Url.Action("Details", "Edificios", new { id = item.ID_Edificio })">
+                                        <i class="fa fa-eye"></i> Detalle
+                                    </a>
+                                    <a class="btn btn-sm red" href="@Url.Action("Delete", "Edificios", new { id = item.ID_Edificio })">
+                                        <i class="fa fa-trash"></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    </div>
+</div>
+</div>
+</div>
+}

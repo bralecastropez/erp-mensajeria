@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b61467c241354f2291718408c916fe25" Name="Diagram1">
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.Contacto" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.Edificio" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.Empresa" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.Entrega" Width="1.5" PointX="9.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.Nivel" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.Oficina" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.Paquete" Width="1.5" PointX="12" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.Proveedor" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.Recepcion" Width="1.5" PointX="9.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.RutaEntrega" Width="1.5" PointX="12.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.SolicitudProveedor" Width="1.5" PointX="9.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.TipoUsuario" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_MensajeriaModel.Usuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="ERP_MensajeriaModel.FK_Contacto_Entrega" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.FK_Contacto_Recepcion" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.FK_Edificio_Nivel" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.FK_Empresa_Entrega" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.FK_Empresa_Nivel" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.FK_Empresa_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.PK_Empresa_Oficina" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.PK_Empresa_RutaEntrega" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.FK_Proveedor_Entrega" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.FK_SolicitudProveedor_Paquete" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.FK_Proveedor_Recepcion" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.FK_Proveedor_SolicitudProveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.PK_Proveedor_RutaEntrega" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_MensajeriaModel.FK_TipoUsuario_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
