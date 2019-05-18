@@ -11,7 +11,9 @@ namespace ERP_Mensajeria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Proveedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,8 +26,19 @@ namespace ERP_Mensajeria.Models
         }
     
         public int ID_Proveedor { get; set; }
+
+        [Display(Name = "Empresa")]
+        [DisplayName("Empresa")]
+        [Required(ErrorMessage = "Debe seleccionar el nombre de la empresa")]
         public int ID_Empresa { get; set; }
+
+        [StringLength(20)]
+        [Display(Name = "Nombre")]
+        [Required(ErrorMessage = "Debe ingresar el nombre del proveedor")]
         public string Nombre { get; set; }
+
+        [StringLength(200)]
+        [DataType(DataType.MultilineText)]
         public string Detalle { get; set; }
     
         public virtual Empresa Empresa { get; set; }

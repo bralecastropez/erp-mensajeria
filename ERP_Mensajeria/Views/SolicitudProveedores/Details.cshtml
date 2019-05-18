@@ -1,0 +1,126 @@
+﻿@model ERP_Mensajeria.Models.SolicitudProveedor
+
+@{
+    ViewBag.Title = "Detalle de la solicitud del proveedor";
+}
+@if (!Request.IsAuthenticated)
+{
+    Response.Redirect(@Url.Action("Login", "Account"));
+}
+else
+{
+
+    <div class="container-fluid mt-5">
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body d-sm-flex justify-content-between">
+                <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span><a href="@Url.Action("Index", "Home")">Inicio</a></span>
+                    <span>/</span>
+                    <span><a href="@Url.Action("Index", "SolicitudProveedores")">Solicitudes de proveedor</a></span>
+                    <span>/</span>
+                    <span>Detalles de la solicitud del proveedor</span>
+                </h4>
+            </div>
+        </div>
+
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body">
+
+                <div>
+                    <h4>Solicitud de proveedor existente</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Fecha_Ingreso)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Fecha_Ingreso)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Hora_Ingreso)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Hora_Ingreso)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Fecha_Creacion)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Fecha_Creacion)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Descripcion_Corta)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Descripcion_Corta)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Elevador)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Elevador)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Estado_Entrega)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Estado_Entrega)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Entregado)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Entregado)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Aprobado)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Aprobado)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Tipo)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Tipo)
+                        </dd>
+
+                        <dt>
+                            Proveedor
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Proveedor.Nombre)
+                        </dd>
+
+                    </dl>
+                </div>
+                <br />
+                <div class="form-group text-right">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a class="btn btn-primary" href="@Url.Action("Index", "SolicitudProveedores")"><i class="fa fa-arrow-left mr-1"></i> Regresar</a>
+                        |
+                        <a href="@Url.Action("Edit", "SolicitudProveedores", new { id = Model.ID_SolicitudProveedor})" class="btn btn-default"><i class="fa fa-edit ml-1"></i> Editar </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

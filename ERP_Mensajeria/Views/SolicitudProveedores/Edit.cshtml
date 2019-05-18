@@ -1,0 +1,203 @@
+﻿@model ERP_Mensajeria.Models.SolicitudProveedor
+
+@{
+    ViewBag.Title = "Editar solicitud de proveedor";
+}
+@if (!Request.IsAuthenticated)
+{
+    Response.Redirect(@Url.Action("Login", "Account"));
+}
+else
+{
+
+    <div class="container-fluid mt-5">
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body d-sm-flex justify-content-between">
+                <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span><a href="@Url.Action("Index", "Home")">Inicio</a></span>
+                    <span>/</span>
+                    <span><a href="@Url.Action("Index", "SolicitudProveedores")">Solicitudes de proveedor</a></span>
+                    <span>/</span>
+                    <span>Editar solicitud de proveedor</span>
+                </h4>
+            </div>
+        </div>
+
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>Solicitud de proveedor existente</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.ID_SolicitudProveedor)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_Proveedor, "Proveedor", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("ID_Proveedor", null, htmlAttributes: new { @class = "md-form mdb-select" })
+                                @Html.ValidationMessageFor(model => model.ID_Proveedor, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Fecha_Ingreso, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Fecha_Ingreso, new { htmlAttributes = new { @class = "form-control datepicker"} })
+                                @Html.ValidationMessageFor(model => model.Fecha_Ingreso, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Hora_Ingreso, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Hora_Ingreso, new { htmlAttributes = new { @class = "form-control timepicker" } })
+                                @Html.ValidationMessageFor(model => model.Hora_Ingreso, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Fecha_Creacion, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Fecha_Creacion, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                                @Html.ValidationMessageFor(model => model.Fecha_Creacion, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Descripcion_Corta, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Descripcion_Corta, new { htmlAttributes = new { @class = "md-form md-textarea" } })
+                                @Html.ValidationMessageFor(model => model.Descripcion_Corta, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Elevador, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.Elevador, new SelectList(new List<Object>{
+                                    new { value = "Si" , text = "Si"  },
+                                    new { value = "No" , text = "No" }},
+                                    "value", "text", 2), new { @class = "mdb-select md-form" })
+                                @Html.ValidationMessageFor(model => model.Elevador, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Estado_Entrega, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.Estado_Entrega, new SelectList(new List<Object>{
+                                    new { value = "En espera" , text = "En espera"  },
+                                    new { value = "Aprobado" , text = "Aprobado"  },
+                                    new { value = "Accesando" , text = "Accesando"  },
+                                    new { value = "Saliendo" , text = "Saliendo" }},
+                                    "value", "text", 2), new { @class = "mdb-select md-form" })
+                                @Html.ValidationMessageFor(model => model.Estado_Entrega, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Entregado, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.Entregado, new SelectList(new List<Object>{
+                                    new { value = "Si" , text = "Si"  },
+                                    new { value = "No" , text = "No" }},
+                                    "value", "text", 2), new { @class = "mdb-select md-form" })
+                                @Html.ValidationMessageFor(model => model.Entregado, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Aprobado, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.Aprobado, new SelectList(new List<Object>{
+                                    new { value = "Si" , text = "Si"  },
+                                    new { value = "No" , text = "No" }},
+                                    "value", "text", 2), new { @class = "mdb-select md-form" })
+                                @Html.ValidationMessageFor(model => model.Aprobado, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.Tipo, new SelectList(new List<Object>{
+                                    new { value = "Entrada" , text = "Entrada"  },
+                                    new { value = "Salida" , text = "Salida" }},
+                                    "value", "text", 2), new { @class = "mdb-select md-form" })
+                                @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group text-right">
+                            <div class="col-md-offset-2 col-md-10">
+                                <a class="btn btn-primary" href="@Url.Action("Index", "SolicitudProveedores")"><i class="fa fa-arrow-left mr-1"></i> Regresar</a>
+                                |
+                                <button type="submit" class="btn btn-default"><i class="fa fa-save ml-1"></i> Guardar </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @Scripts.Render("~/bundles/jquery")
+                @Scripts.Render("~/bundles/bootstrap")
+                @Scripts.Render("~/bundles/jsmaterial")
+
+                <script type="text/javascript">
+                    $('#Fecha_Ingreso').pickadate({
+
+                        // Strings and translations
+                        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
+                            'Noviembre', 'Diciembre'],
+                        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                        weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+                        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+
+                        autoclose: true,
+                        donetext: 'Hecho',
+
+                        // Botones
+                        today: 'Hoy',
+                        clear: 'Limpiar',
+                        close: 'Cerrar',
+
+                        // Formato
+                        //format: 'yyyy/mm/dd'
+                        format: 'yyyy/mm/dd'
+
+                    });
+                    $('#Fecha_Creacion').pickadate({
+
+                        // Strings and translations
+                        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
+                            'Noviembre', 'Diciembre'],
+                        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                        weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+                        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+
+                        autoclose: true,
+                        donetext: 'Hecho',
+
+                        // Botones
+                        today: 'Hoy',
+                        clear: 'Limpiar',
+                        close: 'Cerrar',
+
+                        // Formato
+                        format: 'yyyy/mm/dd'
+
+                    });
+                    $('#Hora_Ingreso').pickatime({
+                        autoclose: true,
+                        'default': 'now',
+                        donetext: 'Hecho',
+                        twelvehour: false
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+}

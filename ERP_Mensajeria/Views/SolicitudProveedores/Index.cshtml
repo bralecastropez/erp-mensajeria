@@ -1,0 +1,127 @@
+﻿@model IEnumerable<ERP_Mensajeria.Models.SolicitudProveedor>
+
+@{
+    ViewBag.Title = "Inicio";
+}
+
+@if (!Request.IsAuthenticated)
+{
+    Response.Redirect(@Url.Action("Login", "Account"));
+}
+else
+{
+
+    <div class="container-fluid mt-5">
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body d-sm-flex justify-content-between">
+                <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span><a href="@Url.Action("Index", "Home")">Inicio</a></span>
+                    <span>/</span>
+                    <span>Solicitudes de proveedor</span>
+                </h4>
+            </div>
+        </div>
+
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2>Listado de solicitudes de proveedor</h2>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-default btn-rounded" href="@Url.Action("Create", "SolicitudProveedores")">
+                            <i class="fa fa-plus"></i> Crear
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <div class="table-responsive ">
+                    <table class="table table-hover ">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Ingreso)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Hora_Ingreso)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Creacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descripcion_Corta)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Elevador)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Estado_Entrega)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Entregado)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Aprobado)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Tipo)
+                            </th>
+                            <th>
+                                Proveedor
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Ingreso)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Hora_Ingreso)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Creacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion_Corta)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Elevador)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Estado_Entrega)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Entregado)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Aprobado)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tipo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Proveedor.Nombre)
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm green" href="@Url.Action("Edit", "SolicitudProveedores", new { id = item.ID_SolicitudProveedor })">
+                                        <i class="fa fa-edit"></i> Editar
+                                    </a>
+                                    <a class="btn btn-sm blue" href="@Url.Action("Details", "SolicitudProveedores", new { id = item.ID_SolicitudProveedor })">
+                                        <i class="fa fa-eye"></i> Detalle
+                                    </a>
+                                    <a class="btn btn-sm red" href="@Url.Action("Delete", "SolicitudProveedores", new { id = item.ID_SolicitudProveedor })">
+                                        <i class="fa fa-trash"></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}

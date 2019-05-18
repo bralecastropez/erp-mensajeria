@@ -11,25 +11,79 @@ namespace ERP_Mensajeria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class SolicitudProveedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SolicitudProveedor()
         {
             this.Paquete = new HashSet<Paquete>();
+            this.Fecha_Creacion = DateTime.Now;
+            this.Fecha_Ingreso = DateTime.Now;
+            this.Hora_Ingreso = DateTime.Now.TimeOfDay;
+
+
         }
     
         public int ID_SolicitudProveedor { get; set; }
+
+        [Display(Name = "Proveedor")]
+        [DisplayName("Proveedor")]
+        [Required(ErrorMessage = "Debe seleccionar el proveedor")]
         public int ID_Proveedor { get; set; }
+
+        [Display(Name = "Fecha de ingreso")]
+        [DisplayName("Fecha de ingreso")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Debe ingresar la fecha de ingreso")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime Fecha_Ingreso { get; set; }
+
+        [Display(Name = "Hora de ingreso")]
+        [DisplayName("Hora de ingreso")]
+        [DataType(DataType.Time)]
+        [Required(ErrorMessage = "Debe ingresar la hora de ingreso")]
         public System.TimeSpan Hora_Ingreso { get; set; }
-        public Nullable<System.DateTime> Fecha_Creacion { get; set; }
+
+        [Display(Name = "Fecha de ingreso")]
+        [DisplayName("Fecha de ingreso")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Debe ingresar la fecha de creación")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public Nullable<System.DateTime> Fecha_Creacion {get;set;}
+
+        [Display(Name = "Descripción corta")]
+        [DisplayName("Descripción corta")]
+        [DataType(DataType.MultilineText)]
         public string Descripcion_Corta { get; set; }
+
+        [DefaultValue("No")]
+        [StringLength(2, MinimumLength = 2)]
+        [Required(ErrorMessage = "Debe seleccionar si se usará el elevador")]
         public string Elevador { get; set; }
+
+        [DefaultValue("En espera")]
+        [StringLength(10, MinimumLength = 7)]
+        [Display(Name = "Estado de la entrega")]
+        [DisplayName("Estado de la entrega")]
+        [Required(ErrorMessage = "Debe seleccionar el estado de la entrega")]
         public string Estado_Entrega { get; set; }
+        
+        [DefaultValue("No")]
+        [StringLength(2, MinimumLength = 2)]
+        [Required(ErrorMessage = "Debe seleccionar el estado entregado")]
         public string Entregado { get; set; }
+
+        [DefaultValue("Si")]
+        [StringLength(2, MinimumLength = 2)]
+        [Required(ErrorMessage = "Debe seleccionar la aprobación")]
         public string Aprobado { get; set; }
+
+        [StringLength(7, MinimumLength = 6)]
+        [Display(Name = "Tipo")]
+        [Required(ErrorMessage = "Debe seleccionar el tipo")]
         public string Tipo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
