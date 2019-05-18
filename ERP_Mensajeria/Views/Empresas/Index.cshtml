@@ -1,0 +1,121 @@
+﻿@model IEnumerable<ERP_Mensajeria.Models.Empresa>
+
+@{
+    ViewBag.Title = "Inicio";
+}
+
+@if (!Request.IsAuthenticated)
+{
+    Response.Redirect(@Url.Action("Login", "Account"));
+}
+else
+{
+
+    <div class="container-fluid mt-5">
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body d-sm-flex justify-content-between">
+                <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span><a href="@Url.Action("Index", "Home")">Inicio</a></span>
+                    <span>/</span>
+                    <span>Empresas</span>
+                </h4>
+            </div>
+        </div>
+
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2>Listado de empresas</h2>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-default btn-rounded" href="@Url.Action("Create", "Empresas")">
+                            <i class="fa fa-plus"></i> Crear
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <div class="table-responsive ">
+                    <table class="table table-hover ">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TipoEmpresa)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Detalle)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Telefono)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Correo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PBX)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NIT)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Encargado)
+                            </th>
+                            <th>
+                                Nivel
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TipoEmpresa)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Detalle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Correo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PBX)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NIT)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Encargado)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nivel.Nombre)
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm green" href="@Url.Action("Edit", "Empresas", new { id = item.ID_Empresa })">
+                                        <i class="fa fa-edit"></i> Editar
+                                    </a>
+                                    <a class="btn btn-sm blue" href="@Url.Action("Details", "Empresas", new { id = item.ID_Empresa })">
+                                        <i class="fa fa-eye"></i> Detalle
+                                    </a>
+                                    <a class="btn btn-sm red" href="@Url.Action("Delete", "Empresas", new { id = item.ID_Empresa })">
+                                        <i class="fa fa-trash"></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}

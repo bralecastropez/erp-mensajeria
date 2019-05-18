@@ -11,7 +11,8 @@ namespace ERP_Mensajeria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Empresa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,13 +26,40 @@ namespace ERP_Mensajeria.Models
     
         public int ID_Empresa { get; set; }
         public int ID_Nivel { get; set; }
+
+        [StringLength(50)]
+        [Display(Name = "Nombre")]
+        [Required(ErrorMessage = "Debe ingresar el nombre de la empresa")]
         public string Nombre { get; set; }
+
+        [StringLength(20)]
+        [Display(Name = "Tipo de empresa")]
+        [Required(ErrorMessage = "Debe ingresar el tipo de empresa")]
         public string TipoEmpresa { get; set; }
+
+        [StringLength(200)]
+        [DataType(DataType.MultilineText)]
         public string Detalle { get; set; }
+
+        [Phone]
+        [StringLength(100)]
+        [Display(Name = "Teléfono")]
         public string Telefono { get; set; }
+
+        [EmailAddress]
+        [StringLength(100)]
+        [Display(Name = "Correo electrónico")]
         public string Correo { get; set; }
         public string PBX { get; set; }
+
+        [StringLength(20, MinimumLength = 7)]
+        [Display(Name = "NIT")]
+        [Required(ErrorMessage = "Debe ingresar el documento de identificación de la empresa")]
         public string NIT { get; set; }
+
+        [StringLength(20)]
+        [Display(Name = "Encargado")]
+        [Required(ErrorMessage = "Debe ingresar el nombre del encargado")]
         public string Encargado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
