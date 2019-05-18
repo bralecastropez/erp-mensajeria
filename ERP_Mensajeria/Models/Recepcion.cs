@@ -11,12 +11,24 @@ namespace ERP_Mensajeria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Recepcion
     {
         public int ID_Recepcion { get; set; }
+
+        [DisplayName("Contacto")]
+        [Required(ErrorMessage = "Debe seleccionar el contacto")]
         public int ID_Contacto { get; set; }
+
+        [DisplayName("Proveedor")]
+        [Required(ErrorMessage = "Debe seleccionar el proveedor")]
         public int ID_Proveedor { get; set; }
+
+        [StringLength(7, MinimumLength = 6)]
+        [Display(Name = "Tipo")]
+        [Required(ErrorMessage = "Debe seleccionar el tipo")]
         public string Tipo { get; set; }
     
         public virtual Contacto Contacto { get; set; }

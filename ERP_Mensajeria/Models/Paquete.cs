@@ -11,14 +11,34 @@ namespace ERP_Mensajeria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Paquete
     {
         public int ID_Paquete { get; set; }
+
+        [Display(Name = "Solicitud de proveedor")]
+        [DisplayName("Solicitud de proveedor")]
+        [Required(ErrorMessage = "Debe seleccionar la solicitud del proveedor")]
         public int ID_SolicitudProveedor { get; set; }
+
+        [DisplayName("Descripción corta")]
+        [DataType(DataType.MultilineText)]
         public string Descripcion { get; set; }
+
+        [DisplayName("Detalle del paquete")]
+        [DataType(DataType.MultilineText)]
         public string Detalle { get; set; }
+
+        [DefaultValue("Activo")]
+        [StringLength(8, MinimumLength = 6)]
+        [DisplayName("Estado")]
+        [Required(ErrorMessage = "Debe seleccionar el estado del paquete")]
         public string Estado { get; set; }
+
+        [DisplayName("Descripción extra")]
+        [DataType(DataType.MultilineText)]
         public string Extra { get; set; }
     
         public virtual SolicitudProveedor SolicitudProveedor { get; set; }

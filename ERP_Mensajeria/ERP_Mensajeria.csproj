@@ -195,9 +195,13 @@
     <Compile Include="Controllers\ContactosController.cs" />
     <Compile Include="Controllers\EdificiosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
+    <Compile Include="Controllers\EntregasController.cs" />
     <Compile Include="Controllers\NivelesController.cs" />
     <Compile Include="Controllers\OficinasController.cs" />
+    <Compile Include="Controllers\PaquetesController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
+    <Compile Include="Controllers\RecepcionesController.cs" />
+    <Compile Include="Controllers\RutaEntregasController.cs" />
     <Compile Include="Controllers\SolicitudProveedoresController.cs" />
     <Compile Include="Controllers\TipoUsuariosController.cs" />
     <Compile Include="Models\Contacto.cs">
@@ -561,6 +565,26 @@
     <Content Include="Views\SolicitudProveedores\Details.cshtml" />
     <Content Include="Views\SolicitudProveedores\Edit.cshtml" />
     <Content Include="Views\SolicitudProveedores\Index.cshtml" />
+    <Content Include="Views\Paquetes\Create.cshtml" />
+    <Content Include="Views\Paquetes\Delete.cshtml" />
+    <Content Include="Views\Paquetes\Details.cshtml" />
+    <Content Include="Views\Paquetes\Edit.cshtml" />
+    <Content Include="Views\Paquetes\Index.cshtml" />
+    <Content Include="Views\Entregas\Create.cshtml" />
+    <Content Include="Views\Entregas\Delete.cshtml" />
+    <Content Include="Views\Entregas\Details.cshtml" />
+    <Content Include="Views\Entregas\Edit.cshtml" />
+    <Content Include="Views\Entregas\Index.cshtml" />
+    <Content Include="Views\Recepciones\Create.cshtml" />
+    <Content Include="Views\Recepciones\Delete.cshtml" />
+    <Content Include="Views\Recepciones\Details.cshtml" />
+    <Content Include="Views\Recepciones\Edit.cshtml" />
+    <Content Include="Views\Recepciones\Index.cshtml" />
+    <Content Include="Views\RutaEntregas\Create.cshtml" />
+    <Content Include="Views\RutaEntregas\Delete.cshtml" />
+    <Content Include="Views\RutaEntregas\Details.cshtml" />
+    <Content Include="Views\RutaEntregas\Edit.cshtml" />
+    <Content Include="Views\RutaEntregas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

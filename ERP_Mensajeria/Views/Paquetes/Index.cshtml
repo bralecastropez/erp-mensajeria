@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ERP_Mensajeria.Models.Paquete>
+@{
+    ViewBag.Title = "Inicio";
+}
+
+@if (!Request.IsAuthenticated)
+{
+    Response.Redirect(@Url.Action("Login", "Account"));
+}
+else
+{
+
+    <div class="container-fluid mt-5">
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body d-sm-flex justify-content-between">
+                <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span><a href="@Url.Action("Index", "Home")">Inicio</a></span>
+                    <span>/</span>
+                    <span>Paquetes</span>
+                </h4>
+            </div>
+        </div>
+
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2>Listado de paquetes</h2>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-default btn-rounded" href="@Url.Action("Create", "Paquetes")">
+                            <i class="fa fa-plus"></i> Crear
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <div class="table-responsive ">
+                    <table class="table table-hover ">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Detalle)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Estado)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Extra)
+                            </th>
+                            <th>
+                                Solicitud de proveedor
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Detalle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Estado)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Extra)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SolicitudProveedor.Descripcion_Corta)
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm green" href="@Url.Action("Edit", "Paquetes", new { id = item.ID_Paquete })">
+                                        <i class="fa fa-edit"></i> Editar
+                                    </a>
+                                    <a class="btn btn-sm blue" href="@Url.Action("Details", "Paquetes", new { id = item.ID_Paquete })">
+                                        <i class="fa fa-eye"></i> Detalle
+                                    </a>
+                                    <a class="btn btn-sm red" href="@Url.Action("Delete", "Paquetes", new { id = item.ID_Paquete })">
+                                        <i class="fa fa-trash"></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,70 @@
+﻿@model ERP_Mensajeria.Models.RutaEntrega
+
+@{
+    ViewBag.Title = "Detalles de la ruta de entrega";
+}
+
+@if (!Request.IsAuthenticated)
+{
+    Response.Redirect(@Url.Action("Login", "Account"));
+}
+else
+{
+
+    <div class="container-fluid mt-5">
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body d-sm-flex justify-content-between">
+                <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span><a href="@Url.Action("Index", "Home")">Inicio</a></span>
+                    <span>/</span>
+                    <span><a href="@Url.Action("Index", "RutaEntregas")">Rutas de entrega</a></span>
+                    <span>/</span>
+                    <span>Detalles de la ruta de entrega</span>
+                </h4>
+            </div>
+        </div>
+
+        <div class="card mb-4 wow fadeIn">
+            <div class="card-body">
+                <div>
+                    <h4>Ruta de entrega</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ORDEN)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ORDEN)
+                        </dd>
+
+                        <dt>
+                            Empresa
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empresa.Nombre)
+                        </dd>
+
+                        <dt>
+                            Proveedor
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Proveedor.Nombre)
+                        </dd>
+
+                    </dl>
+                </div>
+                <br />
+                <div class="form-group text-right">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a class="btn btn-primary" href="@Url.Action("Index", "RutaEntregas")"><i class="fa fa-arrow-left mr-1"></i> Regresar</a>
+                        |
+                        <a href="@Url.Action("Edit", "RutaEntregas", new { id = Model.ID_RutaEntrega})" class="btn btn-default"><i class="fa fa-edit ml-1"></i> Editar </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
